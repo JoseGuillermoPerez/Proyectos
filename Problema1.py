@@ -25,7 +25,7 @@ def divisores(num):
 #depues de 4 numeros perfectos el proceso es mas lento
 #porque el quinto numero perfecto es demasiado grande
 
-N = input('Ingrese un numero entre 1 y 4: ')
+N = int(input('Ingrese un numero entre 1 y 4: '))
 
 #Declaramos variables
 
@@ -41,12 +41,12 @@ if(N<5):
         for y in divisorespropios:      
             total += y                  #Sumamos cada divisor
         if (total == x):
-            print total                 #Si la suma es igual al numero, se imprime el numero
+            print (total)                 #Si la suma es igual al numero, se imprime el numero
             contador+=1                 #y se aumenta el contador
         x+=1                            #Siguiente numero
 
 #Si el numero es muy grande se imprime el texto
 
 else:
-    print 'Numero incorrecto'           
+    print ('Numero incorrecto')           
     
