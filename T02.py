@@ -71,30 +71,7 @@ class matriz(object):
                 return matriz(x)    
             else:                               #si la cantidad de columnas o filas no coincide
                 raise ErrorDimensionalMul          #se levanta un error de dimensiones 
-    '''
-    def determinante(self, matcopia=[]):
-        if (self.matCuadrada(self)):
-            # Copia CORRECTA de la matriz A en la de B.
-            matcopia = [k[:] for k in self.mat]
-            n = len(self.mat)
-            suma = 0
-            if n > 2: # Si el rango es mayor que 2
-                for i in range(len(self.mat)):
-                    factor = matcopia[0][i] # saca el factor de la primera fila i
-                    signo = -2 * (i % 2) + 1 # calcula su signo
-                    #print (signo)
-                    matcopia.remove(matcopia[0]) # Borra la primera fila
-                    for j in range(0,n-1):
-                        # B[j].remove(B[j][i]). NO SE PUEDE PONER REMOVE porque lo que quita es el elemento de la primera posición
-                        matcopia[j].pop(i) # Quita, de cada fila de B, el factor i, o sea, quita esa columna.
-                    suma = suma + factor * signo * self.determinante(matcopia) # El determinante es la suma anterior más lo que calcule
-                    matcopia = [k[:] for k in self.mat] # reconstruye la matriz B
-                return suma # retorna la suma
-            else:
-                return (matcopia[0][0] * matcopia[1][1]) - (matcopia[0][1] * matcopia[1][0]) # devuelve el determinante del rango 2
-        else:
-            raise ErrorDimensional
-    '''        
+
     #metodo para comprobar si la cantidad de columnas de la primer matriz
     #es igual a la cantidad de filas de la segunda matriz. Esto es requisito
     #para poder multiplicarlas
@@ -135,85 +112,6 @@ class matriz(object):
     #representacion de la matriz
     def __repr__(self):
         return self.__str__()   #usamos la sobrecarga de string
-    '''
-    def determinante(self):
-        if self.matCuadrada():
-        # Copia CORRECTA de la matriz A en la de B.
-            self.matcopia = [k[:] for k in self.mat]
-            n = len(self.mat)
-            suma = 0.0
-            if n > 2: # Si el rango es mayor que 2
-                for i in range(len(self.mat)):
-                    factor = self.matcopia[0][i] # saca el factor de la primera fila i
-                    signo = -2 * (i % 2) + 1 # calcula su signo
-                    print (signo)
-                    self.matcopia.remove(self.matcopia[0]) # Borra la primera fila
-                    for j in range(len(self.mat)):
-                        # B[j].remove(B[j][i]). NO SE PUEDE PONER REMOVE porque lo que quita es el elemento de la primera posición
-                        self.matcopia[j].pop(i) # Quita, de cada fila de B, el factor i, o sea, quita esa columna.
-                    suma = suma + factor * signo * self.determinante(self.matcopia) # El determinante es la suma anterior más lo que calcule
-                    self.matcopia = [k[:] for k in self.mat] # reconstruye la matriz B
-                return suma # retorna la suma
-            else:
-                return (self.matcopia[0][0] * self.matcopia[1][1]) - (self.matcopia[0][1] * self.matcopia[1][0]) # devuelve el determinante del rango 2    
-   
-    def determinante(self, copia):
-        if (self.matCuadrada(self)):
-            # Copia CORRECTA de la matriz A en la de B.
-            matcopia = [k[:] for k in self.mat]
-            n = len(self.mat)
-            suma = 0.0
-            if n > 2: # Si el rango es mayor que 2
-                for i in range(len(self.mat)):
-                    factor = matcopia[0][i] # saca el factor de la primera fila i
-                    signo = -2 * (i % 2) + 1 # calcula su signo
-                    print (signo)
-                    matcopia.remove(matcopia[0]) # Borra la primera fila
-                    for j in range(len(self.mat)):
-                        # B[j].remove(B[j][i]). NO SE PUEDE PONER REMOVE porque lo que quita es el elemento de la primera posición
-                        matcopia[j].pop(i) # Quita, de cada fila de B, el factor i, o sea, quita esa columna.
-                    suma = suma + factor * signo * determinante(matcopia) # El determinante es la suma anterior más lo que calcule
-                    matcopia = [k[:] for k in self.mat] # reconstruye la matriz B
-                return suma # retorna la suma
-            else:
-                return (matcopia[0][0] * matcopia[1][1]) - (matcopia[0][1] * matcopia[1][0]) # devuelve el determinante del rango 2
-        else:
-            raise ErrorDimensional
-
-
-        det = 0
-        if len(mattmp) == 2:
-            det = (mattmp[0][0]*mattmp[1][1])-(mattmp[1][0]*mattmp[0][1])
-            return det
-        else:
-            aux=[]
-            for i in range(len(mattmp)):
-                y=[]
-                for j in range(len(mattmp)):    
-                    y.append(0)
-                aux.append(y)
-            for i in range(len(mattmp)):
-                y=[]
-                for j in range(len(mattmp)):
-                    if i != j:
-                        for k in range(1,len(mattmp)):
-                            index =-1
-                            if j < i:
-                                index  =j
-                            else:
-                                index = j -1
-                                aux[index][k-1]=mattmp[j][k]  
-                if i%2 == 0:
-                    det += mattmp[i][0] * self.determinante(aux)
-                else:
-                    det -= mattmp[i][0] * self.determinante(aux)
-        return det                    
-    def llamardet(self):
-        if self.matCuadrada():
-            valor = self.determinante(self.mat)
-            print(valor)
-
-    '''
 
 #clase para cuando existe un error de dimensiones de la matriz
 class ErrorDimensionalSumRes(Exception):
